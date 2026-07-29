@@ -27,14 +27,8 @@ const PREPRINTS = [
     url: "https://chemrxiv.org/doi/10.26434/chemrxiv.15000714",
     note: "Platform paper — mechanism, heavy-metal detoxification, biodefense-relevant modeling (preprint, CC-BY).",
   },
-  {
-    title:
-      "pH-Inverted Histidine-Rich Nanochelant 5H-EAF for Electrostatic Dust Mitigation and Cation Detoxification in Lunar Regolith",
-    doi: "10.26434/chemrxiv.15001881",
-    url: "https://chemrxiv.org/doi/10.26434/chemrxiv.15001881",
-    note: "ISRU / dual-use transfer case — same pH-switch platform applied to cation detoxification (preprint, CC-BY).",
-  },
 ] as const;
+
 
 const MECHANISM = [
   {
