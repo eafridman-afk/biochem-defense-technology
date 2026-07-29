@@ -10,10 +10,10 @@ export function SiteFooter() {
               <BrandLogo size="md" />
             </a>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-fg-muted">
-              BioChem Defense Technology Inc. (BCDT) — independent R&D focused
-              on non-confidential characterization of biological and chemical
-              threat pathways, dual-use risk framing, and protective detection and
-              remediation methods.
+              BioChem Defense Technology Inc. (BCDT) — independent R&D on the
+              5H-EAF pH-gated histidine nanochelant platform for biodefense-
+              relevant modeling, heavy-metal detoxification research, and
+              dual-use stewardship.
             </p>
           </div>
           <div>
@@ -22,18 +22,23 @@ export function SiteFooter() {
             </p>
             <ul className="mt-3 space-y-2 text-sm text-fg-muted">
               <li>
-                <a href="#research" className="hover:text-fg">
-                  R&D posture
+                <a href="#technology" className="hover:text-fg">
+                  Technology · 5H-EAF
                 </a>
               </li>
               <li>
-                <a href="#data" className="hover:text-fg">
-                  Non-confidential data
+                <a href="#science" className="hover:text-fg">
+                  Science & preprints
                 </a>
               </li>
               <li>
                 <a href="#dual-use" className="hover:text-fg">
                   Dual-use stewardship
+                </a>
+              </li>
+              <li>
+                <a href="#team" className="hover:text-fg">
+                  Team
                 </a>
               </li>
               <li>
@@ -49,15 +54,16 @@ export function SiteFooter() {
             </p>
             <p className="mt-3 text-sm leading-relaxed text-fg-muted">
               Public materials on this site are limited to non-confidential,
-              non-controlled information. We do not publish weaponization methods,
-              agent recipes, or export-controlled technical data.
+              non-controlled information from open preprints and abstracts. We
+              do not publish weaponization methods, agent recipes, or
+              export-controlled technical data.
             </p>
             <p className="mt-4 text-sm">
               <a
-                href="https://biochemdefensetech.com/"
+                href="mailto:eafridman@biochemdefensetech.com"
                 className="font-mono text-fg-muted hover:text-fg"
               >
-                biochemdefensetech.com
+                eafridman@biochemdefensetech.com
               </a>
             </p>
           </div>

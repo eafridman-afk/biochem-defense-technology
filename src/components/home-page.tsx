@@ -1,10 +1,8 @@
 import {
-  Activity,
   ArrowRight,
-  Beaker,
-  Biohazard,
-  Database,
-  Eye,
+  Atom,
+  BookOpen,
+  ExternalLink,
   FileCheck2,
   FlaskConical,
   Layers,
@@ -13,7 +11,7 @@ import {
   Scale,
   Shield,
   ShieldAlert,
-  Waves,
+  User,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BrandLogo } from "@/components/brand-logo";
@@ -21,82 +19,79 @@ import { ContactForm } from "@/components/contact-form";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
-const DOMAINS = [
+const PREPRINTS = [
   {
-    icon: Biohazard,
-    title: "Biological threats",
-    body: "Non-confidential characterization of pathogen classes, exposure pathways, and environmental persistence relevant to public health and biosecurity—without operational agent recipes.",
+    title:
+      "pH-Inverted Histidine-Rich Nanochelants for Trapping Furin-Processed Polycationic Nanotoxins",
+    doi: "10.26434/chemrxiv.15000714",
+    url: "https://chemrxiv.org/doi/10.26434/chemrxiv.15000714",
+    note: "Platform paper — mechanism, heavy-metal detoxification, biodefense-relevant modeling (preprint, CC-BY).",
+  },
+  {
+    title:
+      "pH-Inverted Histidine-Rich Nanochelant 5H-EAF for Electrostatic Dust Mitigation and Cation Detoxification in Lunar Regolith",
+    doi: "10.26434/chemrxiv.15001881",
+    url: "https://chemrxiv.org/doi/10.26434/chemrxiv.15001881",
+    note: "ISRU / dual-use transfer case — same pH-switch platform applied to cation detoxification (preprint, CC-BY).",
+  },
+] as const;
+
+const MECHANISM = [
+  {
+    step: "01",
+    title: "Inactive at physiologic pH",
+    body: "At pH ~7.4 the platform remains in a lower-charge state—designed for safe circulation and controlled engagement outside acidic microenvironments.",
+  },
+  {
+    step: "02",
+    title: "Activates at endosomal pH",
+    body: "At pH 5.5–6.5, histidine protonation drives a net +4 to +5 charge, enabling electrostatic clamping and metal coordination of polycationic species and free heavy-metal cations.",
+  },
+  {
+    step: "03",
+    title: "Reversible release",
+    body: "Return to neutral pH weakens binding for release and reagent recycling—supporting a protective, non-permanent capture paradigm rather than irreversible sequestration.",
+  },
+] as const;
+
+const APPLICATIONS = [
+  {
+    icon: Shield,
+    title: "Biodefense-relevant modeling",
+    body: "Computational evaluation of electrostatic engagement with furin-processed polycationic motifs and related endosomal pore architectures—protective countermeasure research framed at non-confidential abstract level.",
   },
   {
     icon: FlaskConical,
-    title: "Chemical threats",
-    body: "Open-domain framing of toxic industrial chemicals, nanoparticle contamination vectors, and sensing signatures across air, water, soil, food, and textile matrices.",
+    title: "Heavy-metal detoxification",
+    body: "pH-gated coordination of free cations (e.g., Pb²⁺ and related metals) with favorable binding free energies at acidic pH and reduced affinity at physiologic pH, as reported in open preprints.",
+  },
+  {
+    icon: Atom,
+    title: "Neuroinflammation & copper transport context",
+    body: "Research framing that connects metal homeostasis, endosomal chemistry, and inflammatory stress pathways—without clinical claims or treatment protocols on this public site.",
+  },
+  {
+    icon: Microscope,
+    title: "Systems & quantum-classical validation",
+    body: "DFT and all-atom MD (MM-PBSA) used to quantify pH-dependent binding, reversibility, and multi-target electrostatic behavior across the published platform studies.",
+  },
+] as const;
+
+const RED_LINES = [
+  {
+    icon: ShieldAlert,
+    t: "Protective mission only",
+    d: "Public programs are oriented to health, environment, infrastructure resilience, and legitimate biodefense research—not offensive use.",
+  },
+  {
+    icon: Layers,
+    t: "Layered disclosure",
+    d: "Capability abstracts and preprint-level science publicly; sensitive implementation detail only under need-to-know agreements.",
   },
   {
     icon: Scale,
-    title: "Dual-use risk",
-    body: "Structured review of research that can serve protective civilian missions and security applications—so beneficial work advances under clear governance.",
-  },
-] as const;
-
-const DATA_PILLARS = [
-  {
-    icon: Database,
-    title: "Public threat taxonomies",
-    body: "Structured, non-confidential catalogs of threat classes, matrices, and detection modalities suitable for partners and peer review.",
-  },
-  {
-    icon: FileCheck2,
-    title: "Method abstracts",
-    body: "High-level descriptions of detection, prevention, and remediation approaches—capabilities without controlled implementation detail.",
-  },
-  {
-    icon: Eye,
-    title: "Observability signals",
-    body: "Indicators, assay families, and environmental sampling concepts that support early warning without enabling misuse.",
-  },
-  {
-    icon: Lock,
-    title: "Clear red lines",
-    body: "What we publish vs. withhold: no weaponization pathways, no production protocols, no export-controlled datasets on public channels.",
-  },
-] as const;
-
-const CAPABILITIES = [
-  {
-    icon: Activity,
-    title: "Real-time detection systems",
-    body: "R&D toward rapid identification of toxic biological and chemical nanoparticles across air, water, soil, food, and textiles—aimed at early threat recognition and response.",
-  },
-  {
-    icon: Shield,
-    title: "Harm prevention solutions",
-    body: "Research on containment and neutralization concepts that reduce exposure risk for infrastructure, workplaces, and vulnerable populations.",
-  },
-  {
-    icon: Beaker,
-    title: "Precision treatment methods",
-    body: "Targeted remediation approaches intended to restore safer conditions in contaminated environments under responsible use constraints.",
-  },
-] as const;
-
-const MATRICES = ["Air", "Water", "Soil", "Food", "Textiles"] as const;
-
-const RD_POINTS = [
-  {
-    label: "01",
-    title: "Research posture, not product theater",
-    body: "We lead with what we study, what we can share, and where dual-use boundaries apply—before marketing claims.",
-  },
-  {
-    label: "02",
-    title: "Non-confidential by design",
-    body: "Public materials are curated for partner engagement, diligence, and scientific literacy without crossing into controlled technical data.",
-  },
-  {
-    label: "03",
-    title: "Protective mission first",
-    body: "Detection, prevention, and remediation research is oriented to health, environment, and infrastructure resilience.",
+    t: "Partner diligence",
+    d: "Collaboration requests are screened for legitimate protective use and appropriate controls before deeper exchange.",
   },
 ] as const;
 
@@ -105,6 +100,7 @@ export function HomePage() {
     <div id="top" className="min-h-dvh bg-bg text-fg">
       <SiteHeader />
 
+      {/* Hero */}
       <section className="relative overflow-hidden pt-[4.25rem]">
         <div className="pointer-events-none absolute inset-0 grid-fade opacity-50" />
         <div className="pointer-events-none absolute -top-32 right-0 h-96 w-96 rounded-full bg-metal-mid/8 blur-3xl" />
@@ -114,34 +110,34 @@ export function HomePage() {
               <div className="flex flex-wrap items-center gap-3">
                 <span className="inline-flex items-center gap-2 rounded-full border border-border bg-bg-elevated px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-fg-muted chrome-edge">
                   <span className="h-1.5 w-1.5 rounded-full bg-metal-hi" />
-                  BCDT · R&D revision
+                  5H-EAF platform · public science
                 </span>
                 <span className="font-mono text-[11px] text-fg-subtle">
                   biochemdefensetech.com
                 </span>
               </div>
 
-              <h1 className="mt-6 max-w-3xl text-balance text-[2.15rem] font-semibold leading-[1.12] tracking-[-0.03em] text-fg sm:text-5xl sm:leading-[1.08]">
-                R&D that frames biological and chemical threats—without sharing
-                what should stay controlled.
+              <h1 className="mt-6 max-w-3xl text-balance text-[2.05rem] font-semibold leading-[1.12] tracking-[-0.03em] text-fg sm:text-5xl sm:leading-[1.08]">
+                pH-gated histidine nanochelant platform for biodefense, heavy-metal detoxification & neuroinflammation research
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-fg-muted sm:text-lg">
-                BioChem Defense Technology (BCDT) advances protective science for
-                toxic biological and chemical contamination. We position{" "}
-                <strong className="font-medium text-fg">non-confidential data</strong>,
-                dual-use risk language, and open research posture so partners can
-                evaluate capability with clarity—and restraint.
+                BioChem Defense Technology (BCDT) develops{" "}
+                <strong className="font-medium text-fg">5H-EAF</strong>—an
+                erythritol-capped linear penta-histidine nanochelant that activates
+                at endosomal pH (5.5–6.5) and remains inert at physiologic pH
+                (7.4). Public materials describe non-confidential science from
+                ChemRxiv preprints, under dual-use stewardship.
               </p>
 
               <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button asChild size="lg">
-                  <a href="#data">
-                    Explore open data posture
+                  <a href="#technology">
+                    Platform mechanism
                     <ArrowRight className="h-4 w-4" />
                   </a>
                 </Button>
                 <Button asChild variant="secondary" size="lg">
-                  <a href="#research">Read R&D stance</a>
+                  <a href="#science">Science & preprints</a>
                 </Button>
               </div>
             </div>
@@ -162,8 +158,9 @@ export function HomePage() {
                   />
                 </div>
                 <figcaption className="border-t border-border px-4 py-3 text-xs leading-relaxed text-fg-muted sm:px-5">
-                  Detection-first identity: molecular structure under examination —
-                  the Q mark for inquiry, BCDT for BioChem Defense Technology.
+                  5H-EAF: reversible, pH-inverted histidine-rich nanochelant —
+                  electrostatic targeting of polycationic species and free heavy
+                  metals. Inquiry-first identity.
                 </figcaption>
               </figure>
             </div>
@@ -171,8 +168,8 @@ export function HomePage() {
 
           <dl className="mt-14 grid gap-4 sm:grid-cols-3">
             {[
-              { k: "Focus", v: "Bio & chem threat R&D" },
-              { k: "Public layer", v: "Non-confidential datasets" },
+              { k: "Platform", v: "5H-EAF pH-gated nanochelant" },
+              { k: "Public science", v: "ChemRxiv preprints (CC-BY)" },
               { k: "Governance", v: "Dual-use stewardship" },
             ].map((item) => (
               <div
@@ -189,158 +186,272 @@ export function HomePage() {
         </div>
       </section>
 
+      {/* One-liner positioning strip */}
       <section className="border-t border-border bg-bg-elevated/40">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-16">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
             <div>
               <p className="text-xs font-medium uppercase tracking-wider text-steel">
-                Why this revision
+                Positioning
               </p>
               <h2 className="mt-3 text-2xl font-semibold tracking-tight text-fg sm:text-3xl">
-                From generic claims to an R&D identity partners can trust.
+                One platform. Dual protective missions.
               </h2>
             </div>
             <div className="space-y-4 text-sm leading-relaxed text-fg-muted sm:text-base">
               <p>
-                The prior public site described detection, prevention, and treatment
-                in broad marketing language. That left the most important questions
-                unanswered: what is research vs. product, what can be shared openly,
-                and how dual-use risk is handled.
+                <strong className="font-medium text-fg">5H-EAF</strong> is a
+                reversible, pH-inverted histidine-rich nanochelant designed for
+                electrostatic targeting of furin-processed polycationic species
+                and free heavy metals (e.g., Cu²⁺ / Pb²⁺ class cations) at
+                endosomal pH—while remaining low-activity at physiologic pH.
               </p>
               <p>
-                This revision centers{" "}
-                <span className="text-fg">state-of-R&D positioning</span>,{" "}
-                <span className="text-fg">non-confidential threat data</span>, and{" "}
-                <span className="text-fg">dual-use stewardship</span>—so government,
-                industry, and research partners see a serious technical organization,
-                not a slogan stack.
+                This public site presents only{" "}
+                <span className="text-fg">non-confidential</span> science from
+                open preprints: mechanism abstracts, computational validation
+                summaries, and dual-use governance language. No controlled
+                recipes, production protocols, or weaponization pathways.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="research" className="scroll-mt-24 border-t border-border">
+      {/* Technology */}
+      <section id="technology" className="scroll-mt-24 border-t border-border">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
           <div className="max-w-2xl">
             <p className="text-xs font-medium uppercase tracking-wider text-steel">
-              Research posture
+              Technology
             </p>
             <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">
-              State of R&D
+              5H-EAF — pH-inverted histidine nanochelant
             </h2>
             <p className="mt-4 text-fg-muted">
-              We operate as an applied research organization. Public materials
-              describe problem spaces, matrices, and protective method families—not
-              closed-source claims without context.
+              High-level, non-confidential description of the published platform.
+              Structural and computational detail lives in the ChemRxiv preprints.
             </p>
           </div>
 
-          <div className="mt-12 grid gap-4 md:grid-cols-3">
-            {RD_POINTS.map((item) => (
-              <article
-                key={item.label}
-                className="rounded-[var(--radius-xl)] border border-border bg-bg-elevated p-6 shadow-[var(--shadow-panel)] chrome-edge"
-              >
-                <p className="font-mono text-xs text-accent">{item.label}</p>
-                <h3 className="mt-3 text-base font-semibold tracking-tight text-fg">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-fg-muted">{item.body}</p>
-              </article>
-            ))}
+          <div className="mt-10 grid gap-4 lg:grid-cols-[1fr_1.15fr]">
+            <article className="rounded-[var(--radius-xl)] border border-border bg-bg-elevated p-6 sm:p-8 chrome-edge">
+              <p className="font-mono text-[11px] uppercase tracking-wider text-fg-subtle">
+                Composition (public abstract)
+              </p>
+              <ul className="mt-5 space-y-3 text-sm text-fg-muted">
+                <li className="flex gap-2">
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-steel" />
+                  <span>
+                    <span className="font-medium text-fg">Scaffold: </span>
+                    erythritol-capped linear penta-histidine nanochelant
+                  </span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-steel" />
+                  <span>
+                    <span className="font-medium text-fg">MW: </span>
+                    ~868 Da (as reported in preprint corrections)
+                  </span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-steel" />
+                  <span>
+                    <span className="font-medium text-fg">Design principle: </span>
+                    inverse of classic histidine-release systems—active when
+                    protonated at endosomal pH
+                  </span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-steel" />
+                  <span>
+                    <span className="font-medium text-fg">Validation: </span>
+                    DFT (B3LYP-D3/def2-TZVP) and all-atom MD / MM-PBSA as
+                    published
+                  </span>
+                </li>
+              </ul>
+            </article>
+
+            <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+              {MECHANISM.map((m) => (
+                <article
+                  key={m.step}
+                  className="rounded-[var(--radius-xl)] border border-border bg-bg p-5 chrome-edge sm:p-6"
+                >
+                  <p className="font-mono text-xs text-accent">{m.step}</p>
+                  <h3 className="mt-2 text-base font-semibold tracking-tight text-fg">
+                    {m.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-fg-muted">
+                    {m.body}
+                  </p>
+                </article>
+              ))}
+            </div>
           </div>
 
-          <div className="mt-10 rounded-[var(--radius-xl)] border border-border bg-bg-subtle/60 p-6 sm:p-8 chrome-edge">
-            <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
-              <div className="max-w-xl">
+          <div className="mt-8 rounded-[var(--radius-xl)] border border-border bg-bg-subtle/60 p-6 sm:p-8 chrome-edge">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+              <div className="max-w-2xl">
                 <div className="flex items-center gap-2 text-sm font-medium text-fg">
-                  <Microscope className="h-4 w-4 text-metal-mid" />
-                  Current public R&D emphasis
+                  <Atom className="h-4 w-4 text-metal-mid" />
+                  pH switch (public summary)
                 </div>
-                <ul className="mt-4 space-y-2.5 text-sm text-fg-muted">
-                  <li className="flex gap-2">
-                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-steel" />
-                    Environmental matrices for toxic biological and chemical nanoparticles
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-steel" />
-                    Sensing and early-warning concepts suitable for open discussion
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-steel" />
-                    Dual-use review language for collaborative programs
-                  </li>
-                </ul>
+                <p className="mt-3 text-sm leading-relaxed text-fg-muted">
+                  At acidic pH 5.5–6.5 the molecule protonates to a net charge of
+                  approximately +4 to +5, enabling strong electrostatic clamping
+                  and coordination. At neutral pH, bound species are released for
+                  safe clearance or reagent recycling. This reversible switch is
+                  the core of the published platform.
+                </p>
               </div>
-              <div className="rounded-[var(--radius-lg)] border border-border bg-bg px-5 py-4 sm:min-w-[220px]">
+              <div className="rounded-[var(--radius-lg)] border border-border bg-bg px-5 py-4 sm:min-w-[200px]">
                 <p className="text-[11px] font-medium uppercase tracking-wide text-fg-subtle">
-                  Engagement mode
+                  Active window
                 </p>
-                <p className="mt-2 text-sm text-fg">
-                  Briefings on non-confidential scope first. Controlled detail only
-                  under appropriate agreements.
+                <p className="mt-2 font-mono text-sm text-fg">pH 5.5 – 6.5</p>
+                <p className="mt-3 text-[11px] font-medium uppercase tracking-wide text-fg-subtle">
+                  Low-activity
                 </p>
+                <p className="mt-2 font-mono text-sm text-fg">pH ~7.4</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Applications */}
       <section
-        id="threats"
+        id="applications"
         className="scroll-mt-24 border-t border-border bg-bg-elevated/30"
       >
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
           <div className="max-w-2xl">
-            <p className="text-xs font-medium uppercase tracking-wider text-warn">
-              Threat domains
+            <p className="text-xs font-medium uppercase tracking-wider text-steel">
+              Applications
             </p>
             <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">
-              Biological and chemical contamination—framed for protection
+              Research directions framed for protection
             </h2>
             <p className="mt-4 text-fg-muted">
-              We confront toxic biological and chemical nanoparticles that can
-              contaminate critical environments. Our public work explains pathways
-              and protective responses at a level that informs without enabling harm.
+              Dual-use by nature: the same electrostatic / pH logic spans
+              biodefense-relevant modeling and heavy-metal detoxification.
+              Everything below is research framing, not product claims.
             </p>
           </div>
 
-          <div className="mt-12 grid gap-4 lg:grid-cols-3">
-            {DOMAINS.map((d) => (
+          <div className="mt-12 grid gap-4 sm:grid-cols-2">
+            {APPLICATIONS.map((a) => (
               <article
-                key={d.title}
-                className="group rounded-[var(--radius-xl)] border border-border bg-bg p-6 transition-[border-color] duration-150 hover:border-border-strong chrome-edge"
+                key={a.title}
+                className="flex gap-4 rounded-[var(--radius-xl)] border border-border bg-bg p-5 sm:p-6 chrome-edge"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-[var(--radius-md)] border border-border bg-bg-elevated text-metal-hi">
-                  <d.icon className="h-5 w-5" strokeWidth={1.75} />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[var(--radius-md)] border border-border bg-bg-elevated text-metal-hi">
+                  <a.icon className="h-5 w-5" strokeWidth={1.75} />
                 </div>
-                <h3 className="mt-5 text-base font-semibold text-fg">{d.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-fg-muted">{d.body}</p>
+                <div>
+                  <h3 className="text-base font-semibold text-fg">{a.title}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">
+                    {a.body}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Science & preprints */}
+      <section id="science" className="scroll-mt-24 border-t border-border">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-2xl">
+              <p className="text-xs font-medium uppercase tracking-wider text-steel">
+                Science & data
+              </p>
+              <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">
+                Open preprints — the public evidence layer
+              </h2>
+              <p className="mt-4 text-fg-muted">
+                Primary sources are ChemRxiv preprints (CC-BY) by Esteban A.
+                Fridman, MD, PhD, BioChem Defense Technology. Preprints are not
+                peer-reviewed; data may be preliminary.
+              </p>
+            </div>
+            <Button asChild variant="secondary">
+              <a
+                href="https://chemrxiv.org/engage/chemrxiv/article-details"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ChemRxiv
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            </Button>
+          </div>
+
+          <div className="mt-12 space-y-4">
+            {PREPRINTS.map((p) => (
+              <article
+                key={p.doi}
+                className="rounded-[var(--radius-xl)] border border-border bg-bg-elevated p-5 sm:p-6 chrome-edge"
+              >
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2 text-xs text-fg-subtle">
+                      <BookOpen className="h-3.5 w-3.5" />
+                      ChemRxiv preprint · CC-BY 4.0
+                    </div>
+                    <h3 className="mt-2 text-base font-semibold leading-snug text-fg">
+                      {p.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-fg-muted">{p.note}</p>
+                    <p className="mt-3 font-mono text-xs text-accent">
+                      doi:{p.doi}
+                    </p>
+                  </div>
+                  <Button asChild variant="secondary" size="sm" className="shrink-0">
+                    <a href={p.url} target="_blank" rel="noopener noreferrer">
+                      Open preprint
+                      <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
+                  </Button>
+                </div>
               </article>
             ))}
           </div>
 
-          <div className="mt-10">
-            <p className="text-xs font-medium uppercase tracking-wide text-fg-subtle">
-              Matrices of concern
-            </p>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {MATRICES.map((m) => (
-                <span
-                  key={m}
-                  className="inline-flex items-center gap-2 rounded-full border border-border bg-bg px-3.5 py-1.5 text-sm text-fg-muted"
+          <div className="mt-8 overflow-hidden rounded-[var(--radius-xl)] border border-border chrome-edge">
+            <div className="border-b border-border bg-bg-subtle px-5 py-3 sm:px-6">
+              <p className="font-mono text-[11px] uppercase tracking-wider text-fg-subtle">
+                What the public record supports
+              </p>
+            </div>
+            <div className="divide-y divide-border bg-bg">
+              {[
+                ["pH switch", "Active ~5.5–6.5; low activity ~7.4; reversible release"],
+                ["Charge state", "Net +4 to +5 when protonated (public abstract)"],
+                ["Targets (abstract)", "Polycationic motifs · free heavy-metal cations"],
+                ["Methods (open)", "DFT · all-atom MD / MM-PBSA · multi-replica analysis"],
+              ].map(([code, desc]) => (
+                <div
+                  key={code}
+                  className="flex flex-col gap-1 px-5 py-3.5 sm:flex-row sm:items-center sm:gap-6 sm:px-6"
                 >
-                  <Waves className="h-3.5 w-3.5 text-steel" />
-                  {m}
-                </span>
+                  <code className="shrink-0 font-mono text-xs text-accent">
+                    {code}
+                  </code>
+                  <span className="text-sm text-fg-muted">{desc}</span>
+                </div>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section id="dual-use" className="scroll-mt-24 border-t border-border">
+      {/* Dual-use */}
+      <section id="dual-use" className="scroll-mt-24 border-t border-border bg-bg-elevated/30">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
             <div>
@@ -351,29 +462,12 @@ export function HomePage() {
                 Beneficial science under explicit dual-use discipline
               </h2>
               <p className="mt-4 text-fg-muted leading-relaxed">
-                Detection, prevention, and remediation technologies can serve
-                civilian health and environmental missions while also carrying
-                security relevance. We treat dual-use as a first-class design
-                constraint—not a footnote.
+                A platform that can inform biodefense research and metal
+                detoxification is dual-use by definition. We treat that as a
+                first-class design constraint—not a footnote.
               </p>
               <ul className="mt-8 space-y-4">
-                {[
-                  {
-                    icon: ShieldAlert,
-                    t: "Purpose limitation",
-                    d: "Public programs are oriented to protection of health, environment, and infrastructure.",
-                  },
-                  {
-                    icon: Layers,
-                    t: "Layered disclosure",
-                    d: "Capability abstracts publicly; sensitive implementation detail only under need-to-know channels.",
-                  },
-                  {
-                    icon: Scale,
-                    t: "Partner diligence",
-                    d: "Collaboration requests are screened for legitimate protective use and appropriate controls.",
-                  },
-                ].map((item) => (
+                {RED_LINES.map((item) => (
                   <li key={item.t} className="flex gap-3">
                     <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--radius-sm)] border border-border bg-bg-elevated text-metal-hi">
                       <item.icon className="h-4 w-4" />
@@ -393,9 +487,9 @@ export function HomePage() {
               </p>
               <blockquote className="mt-4 border-l-2 border-metal-mid pl-4 text-base leading-relaxed text-fg sm:text-lg">
                 We develop and discuss technology for identifying and reducing
-                biological and chemical harm. We do not provide public guidance that
-                would materially assist the creation, weaponization, or covert
-                deployment of biological or chemical agents.
+                biological and chemical harm. We do not provide public guidance
+                that would materially assist the creation, weaponization, or
+                covert deployment of biological or chemical agents.
               </blockquote>
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
                 <div className="rounded-[var(--radius-lg)] border border-border bg-bg p-4">
@@ -403,8 +497,8 @@ export function HomePage() {
                     In scope (public)
                   </p>
                   <p className="mt-2 text-sm text-fg-muted">
-                    Threat taxonomies, matrix mapping, sensing families, dual-use
-                    governance language, high-level remediation concepts.
+                    Platform abstracts, pH-switch summary, preprint links,
+                    dual-use governance language, high-level applications.
                   </p>
                 </div>
                 <div className="rounded-[var(--radius-lg)] border border-border bg-bg p-4">
@@ -413,7 +507,7 @@ export function HomePage() {
                   </p>
                   <p className="mt-2 text-sm text-fg-muted">
                     Agent production, weaponization steps, targeting doctrine, or
-                    any export-controlled technical data sets.
+                    export-controlled technical datasets.
                   </p>
                 </div>
               </div>
@@ -422,110 +516,64 @@ export function HomePage() {
         </div>
       </section>
 
-      <section
-        id="data"
-        className="scroll-mt-24 border-t border-border bg-bg-elevated/30"
-      >
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-2xl">
-              <p className="text-xs font-medium uppercase tracking-wider text-steel">
-                Non-confidential data
-              </p>
-              <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">
-                Position open data for bio and chem threat literacy
-              </h2>
-              <p className="mt-4 text-fg-muted">
-                Partners need more than a tagline. We curate a public information
-                layer—taxonomies, method abstracts, and observability concepts—so
-                diligence and collaboration can start on solid, shareable ground.
-              </p>
-            </div>
-            <Button asChild variant="secondary">
-              <a href="#contact">
-                Request data briefing
-                <ArrowRight className="h-4 w-4" />
-              </a>
-            </Button>
-          </div>
-
-          <div className="mt-12 grid gap-4 sm:grid-cols-2">
-            {DATA_PILLARS.map((p) => (
-              <article
-                key={p.title}
-                className="flex gap-4 rounded-[var(--radius-xl)] border border-border bg-bg p-5 sm:p-6 chrome-edge"
-              >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[var(--radius-md)] border border-border bg-bg-elevated text-steel">
-                  <p.icon className="h-5 w-5" strokeWidth={1.75} />
-                </div>
-                <div>
-                  <h3 className="text-base font-semibold text-fg">{p.title}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">{p.body}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          <div className="mt-8 overflow-hidden rounded-[var(--radius-xl)] border border-border chrome-edge">
-            <div className="border-b border-border bg-bg-subtle px-5 py-3 sm:px-6">
-              <p className="font-mono text-[11px] uppercase tracking-wider text-fg-subtle">
-                Sample public data classes
-              </p>
-            </div>
-            <div className="divide-y divide-border bg-bg">
-              {[
-                ["THREAT-CLASS", "High-level agent / toxin family labels for education"],
-                ["MATRIX-MAP", "Air · water · soil · food · textile exposure pathways"],
-                ["SENSE-MOD", "Detection modality families (spectroscopic, bioassay, …)"],
-                ["DUAL-USE-TAG", "Governance tags for collaboration screening"],
-              ].map(([code, desc]) => (
-                <div
-                  key={code}
-                  className="flex flex-col gap-1 px-5 py-3.5 sm:flex-row sm:items-center sm:gap-6 sm:px-6"
-                >
-                  <code className="shrink-0 font-mono text-xs text-accent">{code}</code>
-                  <span className="text-sm text-fg-muted">{desc}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="capabilities" className="scroll-mt-24 border-t border-border">
+      {/* Founder */}
+      <section id="team" className="scroll-mt-24 border-t border-border">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
           <div className="max-w-2xl">
             <p className="text-xs font-medium uppercase tracking-wider text-steel">
-              Capabilities under study
+              Team
             </p>
             <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">
-              Detection · prevention · treatment—as R&D programs
+              Founder
             </h2>
-            <p className="mt-4 text-fg-muted">
-              Continuity with our original mission areas, restated as research
-              directions with protective intent and dual-use awareness.
-            </p>
           </div>
 
-          <div className="mt-12 grid gap-4 md:grid-cols-3">
-            {CAPABILITIES.map((c) => (
-              <article
-                key={c.title}
-                className="flex flex-col rounded-[var(--radius-xl)] border border-border bg-bg-elevated p-6 chrome-edge"
-              >
-                <div className="flex h-10 w-10 items-center justify-center rounded-[var(--radius-md)] border border-border bg-bg text-metal-hi">
-                  <c.icon className="h-5 w-5" strokeWidth={1.75} />
-                </div>
-                <h3 className="mt-5 text-base font-semibold text-fg">{c.title}</h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-fg-muted">
-                  {c.body}
+          <article className="mt-10 rounded-[var(--radius-xl)] border border-border bg-bg-elevated p-6 sm:p-8 chrome-edge">
+            <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[var(--radius-lg)] border border-border bg-bg text-metal-hi">
+                <User className="h-6 w-6" strokeWidth={1.75} />
+              </div>
+              <div className="min-w-0 flex-1">
+                <h3 className="text-xl font-semibold tracking-tight text-fg">
+                  Esteban A. Fridman, MD, PhD
+                </h3>
+                <p className="mt-1 text-sm text-fg-muted">
+                  Founder · BioChem Defense Technology (BCDT) · Austin, TX
                 </p>
-              </article>
-            ))}
-          </div>
+                <p className="mt-4 max-w-3xl text-sm leading-relaxed text-fg-muted sm:text-base">
+                  Physician-scientist leading computational and biophysical
+                  research on pH-gated histidine nanochelants. Corresponding
+                  author on the public 5H-EAF ChemRxiv preprints covering
+                  polycationic nanotoxin trapping, heavy-metal detoxification,
+                  and dual-use transfer applications. Prior training and research
+                  experience includes neuro / TBI-relevant clinical science;
+                  public materials emphasize protective mission and dual-use
+                  discipline.
+                </p>
+                <div className="mt-5 flex flex-wrap gap-3">
+                  <a
+                    href="mailto:eafridman@biochemdefensetech.com"
+                    className="inline-flex items-center gap-2 rounded-[var(--radius-md)] border border-border bg-bg px-3.5 py-2 text-sm text-fg-muted transition-colors hover:text-fg"
+                  >
+                    eafridman@biochemdefensetech.com
+                  </a>
+                  <a
+                    href="https://chemrxiv.org/doi/10.26434/chemrxiv.15000714"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-[var(--radius-md)] border border-border bg-bg px-3.5 py-2 text-sm text-fg-muted transition-colors hover:text-fg"
+                  >
+                    Primary preprint
+                    <ExternalLink className="h-3.5 w-3.5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
+      {/* Contact */}
       <section
         id="contact"
         className="scroll-mt-24 border-t border-border bg-bg-elevated/40"
@@ -540,15 +588,16 @@ export function HomePage() {
                 Request a non-confidential briefing
               </h2>
               <p className="mt-4 text-fg-muted leading-relaxed">
-                For research collaboration, open-data access discussions, dual-use
-                review, or capability briefings limited to non-confidential scope.
+                For research collaboration, preprint discussion, dual-use
+                review, or capability briefings limited to non-confidential
+                scope.
               </p>
               <div className="mt-8 space-y-4 text-sm">
                 <div className="flex gap-3 rounded-[var(--radius-lg)] border border-border bg-bg p-4 chrome-edge">
                   <FileCheck2 className="mt-0.5 h-4 w-4 shrink-0 text-steel" />
                   <p className="text-fg-muted">
                     <span className="font-medium text-fg">Ideal partners: </span>
-                    labs, public agencies, infrastructure operators, and industry
+                    labs, public agencies, biodefense programs, and industry
                     teams with a protective mission.
                   </p>
                 </div>
@@ -558,6 +607,18 @@ export function HomePage() {
                     <span className="font-medium text-fg">Do not send: </span>
                     controlled technical data, classified content, or detailed
                     agent-production information via this form.
+                  </p>
+                </div>
+                <div className="flex gap-3 rounded-[var(--radius-lg)] border border-border bg-bg p-4 chrome-edge">
+                  <User className="mt-0.5 h-4 w-4 shrink-0 text-steel" />
+                  <p className="text-fg-muted">
+                    <span className="font-medium text-fg">Direct: </span>
+                    <a
+                      href="mailto:eafridman@biochemdefensetech.com"
+                      className="text-fg underline-offset-2 hover:underline"
+                    >
+                      eafridman@biochemdefensetech.com
+                    </a>
                   </p>
                 </div>
               </div>

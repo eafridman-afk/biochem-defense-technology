@@ -5,11 +5,11 @@ import { Button } from "@/components/ui/button";
 import { BrandLogo } from "@/components/brand-logo";
 
 const NAV = [
-  { href: "#research", label: "R&D" },
-  { href: "#threats", label: "Threat domains" },
+  { href: "#technology", label: "Technology" },
+  { href: "#applications", label: "Applications" },
+  { href: "#science", label: "Science" },
   { href: "#dual-use", label: "Dual-use" },
-  { href: "#data", label: "Open data" },
-  { href: "#capabilities", label: "Capabilities" },
+  { href: "#team", label: "Team" },
   { href: "#contact", label: "Contact" },
 ] as const;
 
