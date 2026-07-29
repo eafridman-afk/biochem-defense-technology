@@ -1,0 +1,15 @@
+node_modules/
+.DS_Store
+dist/
+.output/
+.vinxi/
+.vercel/
+*.log
+.env
+.env.*
+!.env.example
+screenshots/
+.grok/
+AGENTS.md
+attachments/
+.node_modules.lock
