@@ -538,8 +538,8 @@ export function HomePage() {
                   Physician-scientist leading computational and biophysical
                   research on pH-gated histidine nanochelants. Corresponding
                   author on the public 5H-EAF ChemRxiv preprints covering
-                  polycationic nanotoxin trapping, heavy-metal detoxification,
-                  and dual-use transfer applications. Prior training and research
+                  polycationic nanotoxin trapping and heavy-metal detoxification
+                  research. Prior training and research
                   experience includes neuro / TBI-relevant clinical science;
                   public materials emphasize protective mission and dual-use
                   discipline.
