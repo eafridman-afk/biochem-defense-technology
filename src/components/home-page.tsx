@@ -23,11 +23,14 @@ const PREPRINTS = [
   {
     title:
       "pH-Inverted Histidine-Rich Nanochelants for Trapping Furin-Processed Polycationic Nanotoxins",
-    doi: "10.26434/chemrxiv.15000714",
-    url: "https://chemrxiv.org/doi/10.26434/chemrxiv.15000714",
-    note: "Platform paper — mechanism, heavy-metal detoxification, biodefense-relevant modeling (preprint, CC-BY).",
+    doi: "10.26434/chemrxiv.15000714/v6",
+    url: "https://chemrxiv.org/doi/full/10.26434/chemrxiv.15000714/v6",
+    citation:
+      "Fridman EA. pH-Inverted Histidine-Rich Nanochelants for Trapping Furin-Processed Polycationic Nanotoxins. ChemRxiv. 2026. doi:10.26434/chemrxiv.15000714/v6 (preprint, CC-BY 4.0; not peer-reviewed).",
+    note: "Canonical public platform paper (v6) — mechanism, heavy-metal detoxification, biodefense-relevant modeling.",
   },
 ] as const;
+
 
 
 const MECHANISM = [
@@ -52,7 +55,7 @@ const APPLICATIONS = [
   {
     icon: Shield,
     title: "Biodefense-relevant modeling",
-    body: "Computational evaluation of electrostatic engagement with furin-processed polycationic motifs and related endosomal pore architectures—protective countermeasure research framed at non-confidential abstract level.",
+    body: "Computational evaluation of electrostatic engagement with furin-processed polycationic motifs and related endosomal architectures — framed as protective countermeasure research at the non-confidential abstract level.",
   },
   {
     icon: FlaskConical,
@@ -62,14 +65,15 @@ const APPLICATIONS = [
   {
     icon: Atom,
     title: "Neuroinflammation & copper transport context",
-    body: "Research framing that connects metal homeostasis, endosomal chemistry, and inflammatory stress pathways—without clinical claims or treatment protocols on this public site.",
+    body: "Research framing connecting metal homeostasis (including ATP7A/ATOX1-related pathways), endosomal chemistry, and inflammatory stress — without clinical claims or treatment protocols.",
   },
   {
     icon: Microscope,
     title: "Systems & quantum-classical validation",
-    body: "DFT and all-atom MD (MM-PBSA) used to quantify pH-dependent binding, reversibility, and multi-target electrostatic behavior across the published platform studies.",
+    body: "DFT (B3LYP-D3/def2-TZVP) and all-atom MD / MM-PBSA used to quantify pH-dependent binding, reversibility, and multi-target electrostatic behavior across the published platform studies.",
   },
 ] as const;
+
 
 const RED_LINES = [
   {
@@ -224,7 +228,9 @@ export function HomePage() {
             </h2>
             <p className="mt-4 text-fg-muted">
               High-level, non-confidential description of the published platform.
-              Structural and computational detail lives in the ChemRxiv preprints.
+              Structural and computational detail lives in the ChemRxiv preprint
+              (v6). Full computational packages remain under appropriate
+              agreements.
             </p>
           </div>
 
@@ -245,7 +251,8 @@ export function HomePage() {
                   <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-steel" />
                   <span>
                     <span className="font-medium text-fg">MW: </span>
-                    ~868 Da (as reported in preprint corrections)
+                    ≈ 868 Da (approximate; as reported in preprint corrections)
+
                   </span>
                 </li>
                 <li className="flex gap-2">
@@ -368,18 +375,19 @@ export function HomePage() {
                 Open preprints — the public evidence layer
               </h2>
               <p className="mt-4 text-fg-muted">
-                Primary sources are ChemRxiv preprints (CC-BY) by Esteban A.
-                Fridman, MD, PhD, BioChem Defense Technology. Preprints are not
-                peer-reviewed; data may be preliminary.
+                This public site summarizes only the open ChemRxiv record (CC-BY)
+                by Esteban A. Fridman, MD, PhD, BioChem Defense Technology.
+                Preprints are not peer-reviewed; data may be preliminary. Full
+                computational packages remain under appropriate agreements.
               </p>
             </div>
             <Button asChild variant="secondary">
               <a
-                href="https://chemrxiv.org/engage/chemrxiv/article-details"
+                href="https://chemrxiv.org/doi/full/10.26434/chemrxiv.15000714/v6"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                ChemRxiv
+                Open ChemRxiv v6
                 <ExternalLink className="h-4 w-4" />
               </a>
             </Button>
@@ -395,15 +403,26 @@ export function HomePage() {
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 text-xs text-fg-subtle">
                       <BookOpen className="h-3.5 w-3.5" />
-                      ChemRxiv preprint · CC-BY 4.0
+                      ChemRxiv preprint · CC-BY 4.0 · v6
                     </div>
                     <h3 className="mt-2 text-base font-semibold leading-snug text-fg">
                       {p.title}
                     </h3>
                     <p className="mt-2 text-sm text-fg-muted">{p.note}</p>
-                    <p className="mt-3 font-mono text-xs text-accent">
+                    <p className="mt-3 text-xs leading-relaxed text-fg-subtle">
+                      {p.citation}
+                    </p>
+                    <p className="mt-2 font-mono text-xs text-accent">
                       doi:{p.doi}
                     </p>
+                    <a
+                      href={p.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-2 inline-block break-all font-mono text-[11px] text-fg-muted underline-offset-2 hover:text-fg hover:underline"
+                    >
+                      {p.url}
+                    </a>
                   </div>
                   <Button asChild variant="secondary" size="sm" className="shrink-0">
                     <a href={p.url} target="_blank" rel="noopener noreferrer">
@@ -415,6 +434,7 @@ export function HomePage() {
               </article>
             ))}
           </div>
+
 
           <div className="mt-8 overflow-hidden rounded-[var(--radius-xl)] border border-border chrome-edge">
             <div className="border-b border-border bg-bg-subtle px-5 py-3 sm:px-6">
@@ -552,12 +572,12 @@ export function HomePage() {
                     eafridman@biochemdefensetech.com
                   </a>
                   <a
-                    href="https://chemrxiv.org/doi/10.26434/chemrxiv.15000714"
+                    href="https://chemrxiv.org/doi/full/10.26434/chemrxiv.15000714/v6"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-[var(--radius-md)] border border-border bg-bg px-3.5 py-2 text-sm text-fg-muted transition-colors hover:text-fg"
                   >
-                    Primary preprint
+                    Primary preprint (v6)
                     <ExternalLink className="h-3.5 w-3.5" />
                   </a>
                 </div>

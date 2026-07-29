@@ -91,12 +91,13 @@ export function ContactForm() {
           className="flex h-11 w-full rounded-[var(--radius-md)] border border-border bg-bg-elevated px-3.5 text-sm text-fg focus-visible:outline-none focus-visible:border-steel/60 focus-visible:ring-2 focus-visible:ring-steel/25"
         >
           <option value="5h-eaf-platform">5H-EAF platform briefing</option>
-          <option value="research-collaboration">Research collaboration</option>
-          <option value="preprint-discussion">Preprint / science discussion</option>
-          <option value="dual-use-review">Dual-use review / governance</option>
+          <option value="chemrxiv-discussion">ChemRxiv preprint discussion</option>
+          <option value="dual-use-collaboration">Dual-use / collaboration inquiry</option>
           <option value="heavy-metal-detox">Heavy-metal detoxification research</option>
+          <option value="research-collaboration">Research collaboration</option>
           <option value="other">Other</option>
         </select>
+
       </div>
       <div className="space-y-2">
         <Label htmlFor="message">Message</Label>
