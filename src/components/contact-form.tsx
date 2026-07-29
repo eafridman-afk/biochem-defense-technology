@@ -16,7 +16,7 @@ const INITIAL: FormState = {
   name: "",
   org: "",
   email: "",
-  interest: "research-collaboration",
+  interest: "5h-eaf-platform",
   message: "",
 };
 
@@ -90,10 +90,11 @@ export function ContactForm() {
           onChange={(e) => update("interest", e.target.value)}
           className="flex h-11 w-full rounded-[var(--radius-md)] border border-border bg-bg-elevated px-3.5 text-sm text-fg focus-visible:outline-none focus-visible:border-steel/60 focus-visible:ring-2 focus-visible:ring-steel/25"
         >
+          <option value="5h-eaf-platform">5H-EAF platform briefing</option>
           <option value="research-collaboration">Research collaboration</option>
-          <option value="open-data">Non-confidential data access</option>
+          <option value="preprint-discussion">Preprint / science discussion</option>
           <option value="dual-use-review">Dual-use review / governance</option>
-          <option value="detection">Detection & sensing briefing</option>
+          <option value="heavy-metal-detox">Heavy-metal detoxification research</option>
           <option value="other">Other</option>
         </select>
       </div>
@@ -104,7 +105,7 @@ export function ContactForm() {
           name="message"
           value={form.message}
           onChange={(e) => update("message", e.target.value)}
-          placeholder="Describe the non-confidential question, data need, or collaboration interest."
+          placeholder="Describe the non-confidential question, collaboration interest, or briefing need."
           required
         />
       </div>
