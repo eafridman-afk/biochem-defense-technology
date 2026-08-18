@@ -8,6 +8,7 @@ import {
   Layers,
   Lock,
   Microscope,
+  Orbit,
   Scale,
   Shield,
   ShieldAlert,
@@ -338,7 +339,15 @@ export function HomePage() {
             <p className="mt-4 text-fg-muted">
               Dual-use by nature: the same electrostatic / pH logic spans
               biodefense-relevant modeling and heavy-metal detoxification.
-              Everything below is research framing, not product claims.
+              Everything below is research framing, not product claims. The
+              public educational companion is{" "}
+              <a
+                href="#moleculosphere"
+                className="text-fg underline-offset-2 hover:underline"
+              >
+                MoleculoSphere 5D
+              </a>
+              .
             </p>
           </div>
 
@@ -360,6 +369,84 @@ export function HomePage() {
               </article>
             ))}
           </div>
+
+          <article
+            id="moleculosphere"
+            className="mt-8 scroll-mt-24 rounded-[var(--radius-xl)] border border-border bg-bg p-6 sm:p-8 chrome-edge"
+          >
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+              <div className="min-w-0 max-w-2xl">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[var(--radius-md)] border border-border bg-bg-elevated text-metal-hi">
+                    <Orbit className="h-5 w-5" strokeWidth={1.75} />
+                  </div>
+                  <div>
+                    <p className="font-mono text-[11px] uppercase tracking-wider text-fg-subtle">
+                      Educational companion · v1.1 · locked kernel
+                    </p>
+                    <h3 className="text-lg font-semibold tracking-tight text-fg sm:text-xl">
+                      MoleculoSphere 5D
+                    </h3>
+                  </div>
+                </div>
+                <p className="mt-4 text-sm leading-relaxed text-fg-muted sm:text-base">
+                  A browser-only classical continuum electrostatics explorer
+                  (Debye–Hückel / Yukawa). It visualizes mean interaction
+                  energies between a curated public ligand set and six public
+                  receptor region-of-interest proxies under a locked,
+                  reproducible kernel. Educational and hypothesis-generation
+                  use only — not a structural model of 5H-EAF, and not a
+                  diagnostic or therapeutic claim.
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-fg-muted">
+                  The proprietary 5H-EAF ligand is intentionally excluded from
+                  the public educational set. Dual-use stewardship applies:
+                  protective mission framing only; no controlled technical
+                  data.
+                </p>
+                <dl className="mt-5 grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-[var(--radius-lg)] border border-border bg-bg-elevated/80 px-4 py-3">
+                    <dt className="text-[11px] font-medium uppercase tracking-wide text-fg-subtle">
+                      Public receptors
+                    </dt>
+                    <dd className="mt-1 text-sm text-fg">
+                      A–F · furin triad · acidic pore · α7 · ATP7A
+                    </dd>
+                  </div>
+                  <div className="rounded-[var(--radius-lg)] border border-border bg-bg-elevated/80 px-4 py-3">
+                    <dt className="text-[11px] font-medium uppercase tracking-wide text-fg-subtle">
+                      Public ligands
+                    </dt>
+                    <dd className="mt-1 text-sm text-fg">
+                      Pb²⁺ · Cu²⁺ (E/F) · KSRRRAR · PRARR · SLLRST
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+              <div className="flex shrink-0 flex-col gap-3 sm:flex-row lg:flex-col">
+                <Button asChild>
+                  <a
+                    href="https://moleculosphere5d.biochemdefensetech.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Open MoleculoSphere 5D
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
+                </Button>
+                <Button asChild variant="secondary">
+                  <a
+                    href="https://github.com/eafridman-afk/MoleculoSphere5D"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Source on GitHub
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -512,7 +599,9 @@ export function HomePage() {
                   </p>
                   <p className="mt-2 text-sm text-fg-muted">
                     Platform abstracts, pH-switch summary, preprint links,
-                    dual-use governance language, high-level applications.
+                    dual-use governance language, high-level applications, and
+                    the public educational electrostatics tool (MoleculoSphere
+                    5D).
                   </p>
                 </div>
                 <div className="rounded-[var(--radius-lg)] border border-border bg-bg p-4">

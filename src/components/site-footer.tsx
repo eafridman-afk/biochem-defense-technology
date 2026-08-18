@@ -27,6 +27,21 @@ export function SiteFooter() {
                 </a>
               </li>
               <li>
+                <a href="#applications" className="hover:text-fg">
+                  Applications
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://moleculosphere5d.biochemdefensetech.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-fg"
+                >
+                  MoleculoSphere 5D
+                </a>
+              </li>
+              <li>
                 <a href="#science" className="hover:text-fg">
                   Science & preprints
                 </a>
