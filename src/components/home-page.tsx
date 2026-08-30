@@ -23,32 +23,30 @@ import { SiteHeader } from "@/components/site-header";
 const PREPRINTS = [
   {
     title:
-      "pH-Inverted Histidine-Rich Nanochelants for Trapping Furin-Processed Polycationic Nanotoxins",
-    doi: "10.26434/chemrxiv.15000714/v6",
-    url: "https://chemrxiv.org/doi/full/10.26434/chemrxiv.15000714/v6",
+      "pH-Gated Two-Channel Histidine Nanochelant for Electrostatic Interception of Furin-Processed Polycationic Species and Soft Heavy Metals",
+    doi: "10.26434/chemrxiv.15000714/v7",
+    url: "https://chemrxiv.org/doi/full/10.26434/chemrxiv.15000714/v7",
     citation:
-      "Fridman EA. pH-Inverted Histidine-Rich Nanochelants for Trapping Furin-Processed Polycationic Nanotoxins. ChemRxiv. 2026. doi:10.26434/chemrxiv.15000714/v6 (preprint, CC-BY 4.0; not peer-reviewed).",
-    note: "Canonical public platform paper (v6) — mechanism, heavy-metal detoxification, biodefense-relevant modeling.",
+      "Fridman EA. pH-Gated Two-Channel Histidine Nanochelant for Electrostatic Interception of Furin-Processed Polycationic Species and Soft Heavy Metals. ChemRxiv. 2026. doi:10.26434/chemrxiv.15000714/v7 (preprint, CC-BY 4.0; not peer-reviewed).",
+    note: "Canonical public platform paper (v7) — two-channel pH-gated mechanism, soft-metal coordination, biodefense-relevant electrostatic modeling.",
   },
 ] as const;
-
-
 
 const MECHANISM = [
   {
     step: "01",
-    title: "Inactive at physiologic pH",
-    body: "At pH ~7.4 the platform remains in a lower-charge state—designed for safe circulation and controlled engagement outside acidic microenvironments.",
+    title: "Channel C · physiologic pH ~7.4",
+    body: "Charge collapses as the five imidazoles deprotonate. Channel C is the soft-metal coordination window—preferential imidazole-N ligation of Hg(II) and Pb(II), with Zn(II) and Cu(I) remaining weakly bound.",
   },
   {
     step: "02",
-    title: "Activates at endosomal pH",
-    body: "At pH 5.5–6.5, histidine protonation drives a net +4 to +5 charge, enabling electrostatic clamping and metal coordination of polycationic species and free heavy-metal cations.",
+    title: "Channel E · endosomal pH 5.5–6.5",
+    body: "Histidine protonation drives a net +4 to +5 charge. Channel E supports competitive occupancy of acidic sites and local neutralization of negative endosomal-pore potential—electrostatic screening, not mechanical occlusion.",
   },
   {
     step: "03",
-    title: "Reversible release",
-    body: "Return to neutral pH weakens binding for release and reagent recycling—supporting a protective, non-permanent capture paradigm rather than irreversible sequestration.",
+    title: "Reversible electrostatic switch",
+    body: "Return to neutrality reverses binding for release and reagent recycling. The functional cycle is a single, reversible electrostatic switch rather than a permanent steric block.",
   },
 ] as const;
 
@@ -56,25 +54,54 @@ const APPLICATIONS = [
   {
     icon: Shield,
     title: "Biodefense-relevant modeling",
-    body: "Computational evaluation of electrostatic engagement with furin-processed polycationic motifs and related endosomal architectures — framed as protective countermeasure research at the non-confidential abstract level.",
+    body: "Computational evaluation of electrostatic engagement with furin-processed polycationic motifs and endosomal pore architectures — framed as protective research at the non-confidential abstract level.",
   },
   {
     icon: FlaskConical,
-    title: "Heavy-metal detoxification",
-    body: "pH-gated coordination of free cations (e.g., Pb²⁺ and related metals) with favorable binding free energies at acidic pH and reduced affinity at physiologic pH, as reported in open preprints.",
+    title: "Soft heavy-metal detoxification research",
+    body: "Channel C coordination of Hg(II) / Pb(II) class cations as reported in the v7 preprint. Zn(II) and Cu(I) remain weakly bound — this is not a copper or zinc chelator claim.",
   },
   {
     icon: Atom,
-    title: "Neuroinflammation & copper transport context",
+    title: "Neuroinflammation & copper-transport context",
     body: "Research framing connecting metal homeostasis (including ATP7A/ATOX1-related pathways), endosomal chemistry, and inflammatory stress — without clinical claims or treatment protocols.",
   },
   {
     icon: Microscope,
     title: "Systems & quantum-classical validation",
-    body: "DFT (B3LYP-D3/def2-TZVP) and all-atom MD / MM-PBSA used to quantify pH-dependent binding, reversibility, and multi-target electrostatic behavior across the published platform studies.",
+    body: "DFT (ORCA; B3LYP-D3/def2-TZVP), multi-replica MD, and MM-PBSA, plus a 34-node directed network (NetworkX). In that computational model the GLP1R safety node is unperturbed at both pH values.",
   },
 ] as const;
 
+const PUBLIC_RECORD = [
+  [
+    "Two-channel switch",
+    "Channel E endosomal (pH 5.5–6.5) · Channel C physiologic (pH ~7.4)",
+  ],
+  ["Charge", "Net +4 to +5 when protonated (Channel E)"],
+  ["pKa", "≈ 6.0–6.1 (five imidazole side chains)"],
+  [
+    "Methods",
+    "DFT (B3LYP-D3/def2-TZVP) · multi-replica MD · MM-PBSA · NetworkX 34-node",
+  ],
+  [
+    "Continuum layer",
+    "MoleculoSphere 5D (Yukawa / Debye–Hückel), cited in v7 Methods",
+  ],
+  [
+    "Channel C metals",
+    "Hg(II), Pb(II) preferred · Zn(II), Cu(I) weakly bound",
+  ],
+  [
+    "GLP1R",
+    "Unperturbed in the computational 34-node network at both pH values",
+  ],
+  ["Cycle", "Reversible electrostatic switch, not a permanent steric block"],
+  [
+    "Scope",
+    "Computational predictions; no experimental Kd in this preprint",
+  ],
+] as const;
 
 const RED_LINES = [
   {
@@ -109,7 +136,7 @@ export function HomePage() {
               <div className="flex flex-wrap items-center gap-3">
                 <span className="inline-flex items-center gap-2 rounded-full border border-border bg-bg-elevated px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-fg-muted chrome-edge">
                   <span className="h-1.5 w-1.5 rounded-full bg-metal-hi" />
-                  5H-EAF platform · public science
+                  5H-EAF · two-channel · ChemRxiv v7
                 </span>
                 <span className="font-mono text-[11px] text-fg-subtle">
                   biochemdefensetech.com
@@ -117,15 +144,17 @@ export function HomePage() {
               </div>
 
               <h1 className="mt-6 max-w-3xl text-balance text-[2.05rem] font-semibold leading-[1.12] tracking-[-0.03em] text-fg sm:text-5xl sm:leading-[1.08]">
-                pH-gated histidine nanochelant platform for biodefense, heavy-metal detoxification & neuroinflammation research
+                pH-gated two-channel histidine nanochelant for electrostatic
+                interception of polycationic species and soft heavy metals
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-fg-muted sm:text-lg">
                 BioChem Defense Technology (BCDT) develops{" "}
                 <strong className="font-medium text-fg">5H-EAF</strong>—an
-                erythritol-capped linear penta-histidine nanochelant that activates
-                at endosomal pH (5.5–6.5) and remains inert at physiologic pH
-                (7.4). Public materials describe non-confidential science from
-                ChemRxiv preprints, under dual-use stewardship.
+                erythritol-capped linear penta-histidine peptide (MW ≈ 868 Da;
+                C₃₆H₄₉N₁₅O₁₁) whose five imidazoles (pKa ≈ 6.0–6.1) define
+                Channel E at endosomal pH and Channel C at physiologic pH.
+                Public materials describe non-confidential science from ChemRxiv
+                v7, under dual-use stewardship.
               </p>
 
               <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -136,7 +165,7 @@ export function HomePage() {
                   </a>
                 </Button>
                 <Button asChild variant="secondary" size="lg">
-                  <a href="#science">Science & preprints</a>
+                  <a href="#science">Science & preprint</a>
                 </Button>
               </div>
             </div>
@@ -157,9 +186,9 @@ export function HomePage() {
                   />
                 </div>
                 <figcaption className="border-t border-border px-4 py-3 text-xs leading-relaxed text-fg-muted sm:px-5">
-                  5H-EAF: reversible, pH-inverted histidine-rich nanochelant —
-                  electrostatic targeting of polycationic species and free heavy
-                  metals. Inquiry-first identity.
+                  5H-EAF: reversible, pH-gated two-channel histidine nanochelant
+                  — electrostatic interception of polycationic species and soft
+                  heavy metals. Inquiry-first identity.
                 </figcaption>
               </figure>
             </div>
@@ -167,8 +196,8 @@ export function HomePage() {
 
           <dl className="mt-14 grid gap-4 sm:grid-cols-3">
             {[
-              { k: "Platform", v: "5H-EAF pH-gated nanochelant" },
-              { k: "Public science", v: "ChemRxiv preprints (CC-BY)" },
+              { k: "Platform", v: "5H-EAF two-channel nanochelant" },
+              { k: "Public science", v: "ChemRxiv v7 (CC-BY)" },
               { k: "Governance", v: "Dual-use stewardship" },
             ].map((item) => (
               <div
@@ -194,23 +223,30 @@ export function HomePage() {
                 Positioning
               </p>
               <h2 className="mt-3 text-2xl font-semibold tracking-tight text-fg sm:text-3xl">
-                One platform. Dual protective missions.
+                One molecule. Two channels. One titration curve.
               </h2>
             </div>
             <div className="space-y-4 text-sm leading-relaxed text-fg-muted sm:text-base">
               <p>
-                <strong className="font-medium text-fg">5H-EAF</strong> is a
-                reversible, pH-inverted histidine-rich nanochelant designed for
-                electrostatic targeting of furin-processed polycationic species
-                and free heavy metals (e.g., Cu²⁺ / Pb²⁺ class cations) at
-                endosomal pH—while remaining low-activity at physiologic pH.
+                <strong className="font-medium text-fg">Channel E</strong>{" "}
+                (His⁺, endosomal pH 5.5–6.5, net +4 to +5): competitive
+                occupancy of acidic sites and local neutralization of negative
+                endosomal-pore potential. The effect is electrostatic screening,
+                not mechanical occlusion.
+              </p>
+              <p>
+                <strong className="font-medium text-fg">Channel C</strong>{" "}
+                (His⁰, pH ~7.4): imidazole-N coordination that prefers Hg(II)
+                and Pb(II); Zn(II) and Cu(I) remain weakly bound. The cycle is a
+                reversible electrostatic switch, not a permanent steric block.
               </p>
               <p>
                 This public site presents only{" "}
                 <span className="text-fg">non-confidential</span> science from
-                open preprints: mechanism abstracts, computational validation
-                summaries, and dual-use governance language. No controlled
-                recipes, production protocols, or weaponization pathways.
+                the open v7 preprint: mechanism abstracts, computational
+                validation summaries, and dual-use governance language. No
+                controlled recipes, production protocols, or weaponization
+                pathways.
               </p>
             </div>
           </div>
@@ -225,13 +261,13 @@ export function HomePage() {
               Technology
             </p>
             <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">
-              5H-EAF — pH-inverted histidine nanochelant
+              5H-EAF — pH-gated two-channel histidine nanochelant
             </h2>
             <p className="mt-4 text-fg-muted">
-              High-level, non-confidential description of the published platform.
-              Structural and computational detail lives in the ChemRxiv preprint
-              (v6). Full computational packages remain under appropriate
-              agreements.
+              High-level, non-confidential description of the published
+              platform. Structural and computational detail lives in the
+              ChemRxiv preprint (v7). Full computational packages remain under
+              appropriate agreements.
             </p>
           </div>
 
@@ -245,31 +281,37 @@ export function HomePage() {
                   <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-steel" />
                   <span>
                     <span className="font-medium text-fg">Scaffold: </span>
-                    erythritol-capped linear penta-histidine nanochelant
+                    erythritol-capped linear penta-histidine peptide
                   </span>
                 </li>
                 <li className="flex gap-2">
                   <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-steel" />
                   <span>
                     <span className="font-medium text-fg">MW: </span>
-                    ≈ 868 Da (approximate; as reported in preprint corrections)
-
+                    ≈ 868 Da (C₃₆H₄₉N₁₅O₁₁; as reported in v7)
+                  </span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-steel" />
+                  <span>
+                    <span className="font-medium text-fg">pKa: </span>
+                    ≈ 6.0–6.1 (five imidazole side chains)
                   </span>
                 </li>
                 <li className="flex gap-2">
                   <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-steel" />
                   <span>
                     <span className="font-medium text-fg">Design principle: </span>
-                    inverse of classic histidine-release systems—active when
-                    protonated at endosomal pH
+                    inverse of classic histidine-release systems—Channel E on
+                    when protonated at endosomal pH
                   </span>
                 </li>
                 <li className="flex gap-2">
                   <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-steel" />
                   <span>
                     <span className="font-medium text-fg">Validation: </span>
-                    DFT (B3LYP-D3/def2-TZVP) and all-atom MD / MM-PBSA as
-                    published
+                    DFT (B3LYP-D3/def2-TZVP), multi-replica MD / MM-PBSA, and a
+                    34-node NetworkX model as published
                   </span>
                 </li>
               </ul>
@@ -298,25 +340,30 @@ export function HomePage() {
               <div className="max-w-2xl">
                 <div className="flex items-center gap-2 text-sm font-medium text-fg">
                   <Atom className="h-4 w-4 text-metal-mid" />
-                  pH switch (public summary)
+                  Two-channel switch (public summary)
                 </div>
                 <p className="mt-3 text-sm leading-relaxed text-fg-muted">
-                  At acidic pH 5.5–6.5 the molecule protonates to a net charge of
-                  approximately +4 to +5, enabling strong electrostatic clamping
-                  and coordination. At neutral pH, bound species are released for
-                  safe clearance or reagent recycling. This reversible switch is
-                  the core of the published platform.
+                  At endosomal pH 5.5–6.5 the molecule protonates to a net
+                  charge of approximately +4 to +5 (Channel E dominant). At
+                  physiologic pH the charge collapses (Channel C dominant),
+                  enabling preferential coordination of soft heavy-metal ions.
+                  Return to neutrality reverses binding. This reversible
+                  electrostatic switch is the core of the published platform.
                 </p>
               </div>
               <div className="rounded-[var(--radius-lg)] border border-border bg-bg px-5 py-4 sm:min-w-[200px]">
                 <p className="text-[11px] font-medium uppercase tracking-wide text-fg-subtle">
-                  Active window
+                  Channel E
                 </p>
                 <p className="mt-2 font-mono text-sm text-fg">pH 5.5 – 6.5</p>
                 <p className="mt-3 text-[11px] font-medium uppercase tracking-wide text-fg-subtle">
-                  Low-activity
+                  Channel C
                 </p>
                 <p className="mt-2 font-mono text-sm text-fg">pH ~7.4</p>
+                <p className="mt-3 text-[11px] font-medium uppercase tracking-wide text-fg-subtle">
+                  pKa
+                </p>
+                <p className="mt-2 font-mono text-sm text-fg">≈ 6.0 – 6.1</p>
               </div>
             </div>
           </div>
@@ -338,9 +385,9 @@ export function HomePage() {
             </h2>
             <p className="mt-4 text-fg-muted">
               Dual-use by nature: the same electrostatic / pH logic spans
-              biodefense-relevant modeling and heavy-metal detoxification.
+              biodefense-relevant modeling and soft heavy-metal research.
               Everything below is research framing, not product claims. The
-              public educational companion is{" "}
+              public educational companion cited in v7 Methods is{" "}
               <a
                 href="#moleculosphere"
                 className="text-fg underline-offset-2 hover:underline"
@@ -382,7 +429,8 @@ export function HomePage() {
                   </div>
                   <div>
                     <p className="font-mono text-[11px] uppercase tracking-wider text-fg-subtle">
-                      Educational companion · v1.1 · locked kernel
+                      v7 Methods ref. 20 · educational companion · v1.1 · locked
+                      kernel
                     </p>
                     <h3 className="text-lg font-semibold tracking-tight text-fg sm:text-xl">
                       MoleculoSphere 5D
@@ -390,19 +438,20 @@ export function HomePage() {
                   </div>
                 </div>
                 <p className="mt-4 text-sm leading-relaxed text-fg-muted sm:text-base">
-                  A browser-only classical continuum electrostatics explorer
-                  (Debye–Hückel / Yukawa). It visualizes mean interaction
+                  The public Debye–Hückel / Yukawa continuum kernel cited in the
+                  v7 Methods section. A browser-only educational /
+                  hypothesis-generation tool that visualizes mean interaction
                   energies between a curated public ligand set and six public
                   receptor region-of-interest proxies under a locked,
-                  reproducible kernel. Educational and hypothesis-generation
-                  use only — not a structural model of 5H-EAF, and not a
-                  diagnostic or therapeutic claim.
+                  reproducible kernel — not a structural model of 5H-EAF, and
+                  not a diagnostic or therapeutic claim.
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-fg-muted">
-                  The proprietary 5H-EAF ligand is intentionally excluded from
-                  the public educational set. Dual-use stewardship applies:
-                  protective mission framing only; no controlled technical
-                  data.
+                  Layered disclosure: the proprietary 5H-EAF ligand is
+                  intentionally excluded from this public educational set, even
+                  though composition is described in the open preprint. Dual-use
+                  stewardship applies — protective mission framing only; no
+                  controlled technical data.
                 </p>
                 <dl className="mt-5 grid gap-3 sm:grid-cols-2">
                   <div className="rounded-[var(--radius-lg)] border border-border bg-bg-elevated/80 px-4 py-3">
@@ -459,22 +508,24 @@ export function HomePage() {
                 Science & data
               </p>
               <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">
-                Open preprints — the public evidence layer
+                Open preprint — the public evidence layer
               </h2>
               <p className="mt-4 text-fg-muted">
-                This public site summarizes only the open ChemRxiv record (CC-BY)
-                by Esteban A. Fridman, MD, PhD, BioChem Defense Technology.
-                Preprints are not peer-reviewed; data may be preliminary. Full
-                computational packages remain under appropriate agreements.
+                This public site summarizes only the open ChemRxiv record
+                (CC-BY) by Esteban A. Fridman, MD, PhD, BioChem Defense
+                Technology. Preprints are not peer-reviewed; data may be
+                preliminary. Binding free energies remain computational
+                predictions — v7 reports no experimental dissociation constants.
+                Full computational packages remain under appropriate agreements.
               </p>
             </div>
             <Button asChild variant="secondary">
               <a
-                href="https://chemrxiv.org/doi/full/10.26434/chemrxiv.15000714/v6"
+                href="https://chemrxiv.org/doi/full/10.26434/chemrxiv.15000714/v7"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Open ChemRxiv v6
+                Open ChemRxiv v7
                 <ExternalLink className="h-4 w-4" />
               </a>
             </Button>
@@ -490,7 +541,7 @@ export function HomePage() {
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 text-xs text-fg-subtle">
                       <BookOpen className="h-3.5 w-3.5" />
-                      ChemRxiv preprint · CC-BY 4.0 · v6
+                      ChemRxiv preprint · CC-BY 4.0 · v7 · 27 Aug 2026
                     </div>
                     <h3 className="mt-2 text-base font-semibold leading-snug text-fg">
                       {p.title}
@@ -522,7 +573,6 @@ export function HomePage() {
             ))}
           </div>
 
-
           <div className="mt-8 overflow-hidden rounded-[var(--radius-xl)] border border-border chrome-edge">
             <div className="border-b border-border bg-bg-subtle px-5 py-3 sm:px-6">
               <p className="font-mono text-[11px] uppercase tracking-wider text-fg-subtle">
@@ -530,12 +580,7 @@ export function HomePage() {
               </p>
             </div>
             <div className="divide-y divide-border bg-bg">
-              {[
-                ["pH switch", "Active ~5.5–6.5; low activity ~7.4; reversible release"],
-                ["Charge state", "Net +4 to +5 when protonated (public abstract)"],
-                ["Targets (abstract)", "Polycationic motifs · free heavy-metal cations"],
-                ["Methods (open)", "DFT · all-atom MD / MM-PBSA · multi-replica analysis"],
-              ].map(([code, desc]) => (
+              {PUBLIC_RECORD.map(([code, desc]) => (
                 <div
                   key={code}
                   className="flex flex-col gap-1 px-5 py-3.5 sm:flex-row sm:items-center sm:gap-6 sm:px-6"
@@ -598,7 +643,7 @@ export function HomePage() {
                     In scope (public)
                   </p>
                   <p className="mt-2 text-sm text-fg-muted">
-                    Platform abstracts, pH-switch summary, preprint links,
+                    v7 two-channel preprint abstract, pH-switch summary,
                     dual-use governance language, high-level applications, and
                     the public educational electrostatics tool (MoleculoSphere
                     5D).
@@ -646,12 +691,12 @@ export function HomePage() {
                 <p className="mt-4 max-w-3xl text-sm leading-relaxed text-fg-muted sm:text-base">
                   Physician-scientist leading computational and biophysical
                   research on pH-gated histidine nanochelants. Corresponding
-                  author on the public 5H-EAF ChemRxiv preprints covering
-                  polycationic nanotoxin trapping and heavy-metal detoxification
-                  research. Prior training and research
-                  experience includes neuro / TBI-relevant clinical science;
-                  public materials emphasize protective mission and dual-use
-                  discipline.
+                  author on the public v7 ChemRxiv preprint describing the
+                  two-channel 5H-EAF platform — electrostatic interception of
+                  polycationic species and soft heavy metals. Prior training
+                  and research experience includes neuro / TBI-relevant
+                  clinical science; public materials emphasize protective
+                  mission and dual-use discipline.
                 </p>
                 <div className="mt-5 flex flex-wrap gap-3">
                   <a
@@ -661,12 +706,12 @@ export function HomePage() {
                     eafridman@biochemdefensetech.com
                   </a>
                   <a
-                    href="https://chemrxiv.org/doi/full/10.26434/chemrxiv.15000714/v6"
+                    href="https://chemrxiv.org/doi/full/10.26434/chemrxiv.15000714/v7"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-[var(--radius-md)] border border-border bg-bg px-3.5 py-2 text-sm text-fg-muted transition-colors hover:text-fg"
                   >
-                    Primary preprint (v6)
+                    Primary preprint (v7)
                     <ExternalLink className="h-3.5 w-3.5" />
                   </a>
                 </div>

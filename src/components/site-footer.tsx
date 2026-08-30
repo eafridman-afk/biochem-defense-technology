@@ -11,8 +11,8 @@ export function SiteFooter() {
             </a>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-fg-muted">
               BioChem Defense Technology Inc. (BCDT) — independent R&D on the
-              5H-EAF pH-gated histidine nanochelant platform for biodefense-
-              relevant modeling, heavy-metal detoxification research, and
+              5H-EAF pH-gated two-channel histidine nanochelant for
+              biodefense-relevant modeling, soft heavy-metal research, and
               dual-use stewardship.
             </p>
           </div>
@@ -43,7 +43,7 @@ export function SiteFooter() {
               </li>
               <li>
                 <a href="#science" className="hover:text-fg">
-                  Science & preprints
+                  Science & preprint
                 </a>
               </li>
               <li>

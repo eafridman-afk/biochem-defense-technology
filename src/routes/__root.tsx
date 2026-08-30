@@ -4,9 +4,9 @@ import appCss from "../styles.css?url";
 
 const SITE_URL = "https://biochemdefensetech.com";
 const SITE_TITLE =
-  "BCDT — 5H-EAF pH-Gated Histidine Nanochelant Platform | BioChem Defense Technology";
+  "BCDT — 5H-EAF pH-Gated Two-Channel Histidine Nanochelant | BioChem Defense Technology";
 const SITE_DESCRIPTION =
-  "BioChem Defense Technology develops 5H-EAF, a pH-gated histidine nanochelant platform for biodefense-relevant research, heavy-metal detoxification, and dual-use stewardship. Public ChemRxiv science only.";
+  "BioChem Defense Technology develops 5H-EAF, a pH-gated two-channel histidine nanochelant for electrostatic interception of polycationic species and soft heavy metals. ChemRxiv v7 public science and MoleculoSphere 5D educational companion. Dual-use stewardship.";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -21,13 +21,13 @@ export const Route = createRootRoute({
       { name: "robots", content: "index, follow" },
       { property: "og:url", content: `${SITE_URL}/` },
       { property: "og:site_name", content: "BioChem Defense Technology" },
-      { property: "og:title", content: "BCDT — 5H-EAF Platform" },
+      { property: "og:title", content: "BCDT — 5H-EAF two-channel platform" },
       { property: "og:description", content: SITE_DESCRIPTION },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "en_US" },
       { property: "og:image", content: `${SITE_URL}/bcdt-logo.jpg` },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "BCDT — 5H-EAF Platform" },
+      { name: "twitter:title", content: "BCDT — 5H-EAF two-channel platform" },
       { name: "twitter:description", content: SITE_DESCRIPTION },
       { name: "twitter:image", content: `${SITE_URL}/bcdt-logo.jpg` },
     ],
