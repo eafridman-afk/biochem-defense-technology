@@ -68,8 +68,8 @@ const APPLICATIONS = [
   },
   {
     icon: Microscope,
-    title: "Systems & quantum-classical validation",
-    body: "DFT (ORCA; B3LYP-D3/def2-TZVP), multi-replica MD, and MM-PBSA, plus a 34-node directed network (NetworkX). In that computational model the GLP1R safety node is unperturbed at both pH values.",
+    title: "Computational methods",
+    body: "DFT first-shell metal geometries, multi-replica MD, and continuum electrostatics at pH 5.5 and 7.4. End-point free energies, where shown in the preprint, are computational and are not experimental dissociation constants.",
   },
 ] as const;
 
@@ -82,7 +82,7 @@ const PUBLIC_RECORD = [
   ["pKa", "≈ 6.0–6.1 (five imidazole side chains)"],
   [
     "Methods",
-    "DFT (B3LYP-D3/def2-TZVP) · multi-replica MD · MM-PBSA · NetworkX 34-node",
+    "DFT · two-pH APBS/MD · continuum Yukawa (MoleculoSphere 5D)",
   ],
   [
     "Continuum layer",
@@ -92,10 +92,7 @@ const PUBLIC_RECORD = [
     "Channel C metals",
     "Hg(II), Pb(II) preferred · Zn(II), Cu(I) weakly bound",
   ],
-  [
-    "GLP1R",
-    "Unperturbed in the computational 34-node network at both pH values",
-  ],
+  ["Action", "Does not inhibit furin. Does not insert into membranes. Does not carry a cytotoxic payload."],
   ["Cycle", "Reversible electrostatic switch, not a permanent steric block"],
   [
     "Scope",
@@ -241,10 +238,14 @@ export function HomePage() {
                 reversible electrostatic switch, not a permanent steric block.
               </p>
               <p>
+                Does not inhibit furin. Does not insert into membranes. Does not
+                carry a cytotoxic payload.
+              </p>
+              <p>
                 This public site presents only{" "}
                 <span className="text-fg">non-confidential</span> science from
                 the open v7 preprint: mechanism abstracts, computational
-                validation summaries, and dual-use governance language. No
+                methods summaries, and dual-use governance language. No
                 controlled recipes, production protocols, or weaponization
                 pathways.
               </p>
@@ -309,9 +310,10 @@ export function HomePage() {
                 <li className="flex gap-2">
                   <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-steel" />
                   <span>
-                    <span className="font-medium text-fg">Validation: </span>
-                    DFT (B3LYP-D3/def2-TZVP), multi-replica MD / MM-PBSA, and a
-                    34-node NetworkX model as published
+                    <span className="font-medium text-fg">Methods: </span>
+                    DFT first-shell geometries (B3LYP-D3/def2-TZVP) and two-pH
+                    electrostatics as reported in the preprint. Computational. No
+                    experimental Kd.
                   </span>
                 </li>
               </ul>
@@ -516,7 +518,9 @@ export function HomePage() {
                 Technology. Preprints are not peer-reviewed; data may be
                 preliminary. Binding free energies remain computational
                 predictions — v7 reports no experimental dissociation constants.
-                Full computational packages remain under appropriate agreements.
+                A control preparation at the default physiological pH of 7.4 is
+                not a test of the pH gate. Full computational packages remain
+                under appropriate agreements.
               </p>
             </div>
             <Button asChild variant="secondary">
