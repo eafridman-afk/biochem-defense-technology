@@ -63,8 +63,8 @@ const APPLICATIONS = [
   },
   {
     icon: Atom,
-    title: "Neuroinflammation & copper-transport context",
-    body: "Research framing connecting metal homeostasis (including ATP7A/ATOX1-related pathways), endosomal chemistry, and inflammatory stress — without clinical claims or treatment protocols.",
+    title: "Acidified tumor and endosomal niches",
+    body: "Tumor endosomes and macrophage compartments sit at pH 5.5–6.5, the Channel E occupancy window. This is compartment chemistry of the published two-channel switch — not a delivery vehicle and not an oncology protocol.",
   },
   {
     icon: Microscope,
@@ -96,7 +96,7 @@ const PUBLIC_RECORD = [
   ["Cycle", "Reversible electrostatic switch, not a permanent steric block"],
   [
     "Scope",
-    "Computational predictions; no experimental Kd in this preprint",
+    "Computational predictions only; not experimental binding constants",
   ],
 ] as const;
 
@@ -217,13 +217,21 @@ export function HomePage() {
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
             <div>
               <p className="text-xs font-medium uppercase tracking-wider text-steel">
-                Positioning
+                The gap
               </p>
               <h2 className="mt-3 text-2xl font-semibold tracking-tight text-fg sm:text-3xl">
                 One molecule. Two channels. One titration curve.
               </h2>
             </div>
             <div className="space-y-4 text-sm leading-relaxed text-fg-muted sm:text-base">
+              <p>
+                <strong className="font-medium text-fg">The gap</strong> is the
+                acidified tumor endosome and macrophage window at pH 5.5–6.5,
+                where histidine occupancy actually moves (Channel E). That is
+                compartment chemistry, not a delivery construct and not an
+                oncology protocol. Channel C remains the physiologic (~7.4)
+                soft-metal window.
+              </p>
               <p>
                 <strong className="font-medium text-fg">Channel E</strong>{" "}
                 (His⁺, endosomal pH 5.5–6.5, net +4 to +5): competitive
@@ -312,8 +320,8 @@ export function HomePage() {
                   <span>
                     <span className="font-medium text-fg">Methods: </span>
                     DFT first-shell geometries (B3LYP-D3/def2-TZVP) and two-pH
-                    electrostatics as reported in the preprint. Computational. No
-                    experimental Kd.
+                    electrostatics as reported in the preprint. Computational
+                    predictions only; not experimental binding constants.
                   </span>
                 </li>
               </ul>
@@ -387,7 +395,8 @@ export function HomePage() {
             </h2>
             <p className="mt-4 text-fg-muted">
               Dual-use by nature: the same electrostatic / pH logic spans
-              biodefense-relevant modeling and soft heavy-metal research.
+              biodefense-relevant modeling, soft heavy-metal research, and
+              acidified tumor / endosomal niches as compartment chemistry.
               Everything below is research framing, not product claims. The
               public educational companion cited in v7 Methods is{" "}
               <a
